@@ -1,4 +1,18 @@
 const myLibrary = [];
+const addBtn = document.querySelector(".addBook")
+const dialog = document.querySelector("#addBookDialog")
+const newBookBtn = document.querySelector(".newBookBtn")
+addBtn.addEventListener('click', addNewBookPopup)
+newBookBtn.addEventListener('click', (e)=>{
+    e.preventDefault()
+    const inputs = document.querySelectorAll('input')
+    const tempData = Array.from(inputs).map(input => input.value)
+    tempData.push("started")
+    const newBook = new Book(tempData[0], tempData[1], tempData[2], tempData[3])
+    addBookToLibrary(newBook)
+    dialog.close()
+    displayBooks()
+})
 
 function Book(author, title, pages, status) {
     this.author = author
@@ -29,6 +43,10 @@ function createBookCard(book){
         <button class="change-status">${book.status}</button>
         <button class="delete-book">Delete</button>
     </div>`
+}
+
+function addNewBookPopup(){
+    dialog.showModal()
 }
 
 const testBook = {
