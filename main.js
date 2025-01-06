@@ -34,6 +34,15 @@ function displayBooks(){
         const bookCardTemplate = createBookCard(book)
         bookCards.insertAdjacentHTML('beforeend', bookCardTemplate)
     });
+
+    const deleteBtn = document.querySelectorAll('.delete-book')
+    deleteBtn.forEach(btn => {
+        btn.addEventListener('click', ()=>{
+            const id = btn.dataset.id
+            myLibrary.splice(id, 1)
+            displayBooks()
+        })
+})
 }
 
 function createBookCard(book){
@@ -43,7 +52,7 @@ function createBookCard(book){
         <h2 class="book-author">${book.author}</h2>
         <h3 class="book-pages">${book.pages}</h3>
         <button class="change-status">${book.status}</button>
-        <button class="delete-book">Delete</button>
+        <button class="delete-book" data-id="${myLibrary.indexOf(book)}">Delete</button>
     </div>`
 }
 
