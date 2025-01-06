@@ -2,6 +2,7 @@ const myLibrary = [];
 const addBtn = document.querySelector(".addBook")
 const dialog = document.querySelector("#addBookDialog")
 const newBookBtn = document.querySelector(".newBookBtn")
+
 addBtn.addEventListener('click', addNewBookPopup)
 newBookBtn.addEventListener('click', (e)=>{
     e.preventDefault()
@@ -27,8 +28,9 @@ function addBookToLibrary(bookForm) {
 }
 
 function displayBooks(){
+    const bookCards = document.querySelector('.book-cards')
+    bookCards.innerHTML = ""
     myLibrary.forEach(book => {
-        const bookCards = document.querySelector('.book-cards')
         const bookCardTemplate = createBookCard(book)
         bookCards.insertAdjacentHTML('beforeend', bookCardTemplate)
     });
