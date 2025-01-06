@@ -8,7 +8,7 @@ newBookBtn.addEventListener('click', (e)=>{
     e.preventDefault()
     const inputs = document.querySelectorAll('input')
     const tempData = Array.from(inputs).map(input => input.value)
-    tempData.push("started")
+    tempData.push("Started")
     const newBook = new Book(tempData[0], tempData[1], tempData[2], tempData[3])
     addBookToLibrary(newBook)
     dialog.close()
@@ -30,6 +30,7 @@ function addBookToLibrary(bookForm) {
 function displayBooks(){
     const bookCards = document.querySelector('.book-cards')
     bookCards.innerHTML = ""
+    console.log(myLibrary)
     myLibrary.forEach(book => {
         const bookCardTemplate = createBookCard(book)
         bookCards.insertAdjacentHTML('beforeend', bookCardTemplate)
@@ -43,6 +44,21 @@ function displayBooks(){
             displayBooks()
         })
 })
+
+    const statusBtn = document.querySelectorAll('.change-status')
+    statusBtn.forEach(btn => {
+        btn.addEventListener('click', ()=>{
+            const parentCard = btn.parentElement
+            const id = parentCard.querySelector('.delete-book').dataset.id
+            if(myLibrary[id].status == 'Started'){
+                myLibrary[id].status = 'Reading...'
+            } else if(myLibrary[id].status == 'Reading...'){
+                myLibrary[id].status = 'Finished'
+            }
+            console.log('changing')
+            displayBooks()
+        })
+    })
 }
 
 function createBookCard(book){
@@ -51,12 +67,15 @@ function createBookCard(book){
         <h1 class="book-title">${book.title}</h1>
         <h2 class="book-author">${book.author}</h2>
         <h3 class="book-pages">${book.pages}</h3>
-        <button class="change-status">${book.status}</button>
+        <h4 class="book-status">${book.status}</h4>
+        <button class="change-status">change status</button>
         <button class="delete-book" data-id="${myLibrary.indexOf(book)}">Delete</button>
     </div>`
 }
 
 function addNewBookPopup(){
+    const inputs = document.querySelectorAll('input')
+    const tempData = Array.from(inputs).map(input => input.value = '')
     dialog.showModal()
 }
 
@@ -64,7 +83,7 @@ const testBook = {
     author: 'Test-Author',
     title: 'Test-Title',
     pages: 200,
-    status: 'Read'
+    status: 'Started'
 }
 
 addBookToLibrary(testBook)
