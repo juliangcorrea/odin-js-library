@@ -66,10 +66,12 @@ function createBookCard(book){
     <div class="book-card">
         <h1 class="book-title">${book.title}</h1>
         <h2 class="book-author">${book.author}</h2>
-        <h3 class="book-pages">${book.pages}</h3>
+        <h3 class="book-pages">${book.pages} pages</h3>
         <h4 class="book-status">${book.status}</h4>
-        <button class="change-status">change status</button>
-        <button class="delete-book" data-id="${myLibrary.indexOf(book)}">Delete</button>
+        <div class="buttons">
+            <button class="change-status">Change Status</button>
+            <button class="delete-book" data-id="${myLibrary.indexOf(book)}">Delete Book</button>
+        </div>
     </div>`
 }
 
@@ -80,9 +82,9 @@ function addNewBookPopup(){
 }
 
 const testBook = {
-    author: 'Test-Author',
-    title: 'Test-Title',
-    pages: 200,
+    author: 'Mark Twain',
+    title: 'The Adventures of Tom Sawyer',
+    pages: 224,
     status: 'Started'
 }
 

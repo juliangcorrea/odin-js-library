@@ -1,0 +1,115 @@
+/* Basic CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;flex-direction: column;
+    background-color: #fef6e4;
+}
+
+.main-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f3d2c1;
+    border-radius: 10px;
+}
+
+.main-title h1{
+    margin: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    color: #001858;
+}
+
+.main-title button{
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    background-color: #f582ae;
+    border-radius: 10px;
+    border:2px solid transparent;
+    color: #001858;
+}
+
+section button:hover{
+    border: 2px solid #001858;
+}
+
+.book-cards{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.book-card{
+    height: fit-content;
+    width: fit-content;
+    max-width: 25%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #8bd3dd;
+    color: #001858;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+.book-card *{
+    margin: 5px;
+}
+
+.book-card button{
+    padding: 5px;
+    cursor: pointer;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    background-color: #f582ae;
+    border-radius: 10px;
+    border:2px solid transparent;
+    color: #001858;
+}
+
+.book-card h1{
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+}
+
+.book-card h2{
+    font-size: 20px;
+}
+
+.book-card h3{
+    font-size: 15px;
+}
+
+.book-card h4{
+    font-size: 20px;
+}
+
+.book-card .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#addBookDialog{
+    align-self: center;
+    justify-self: center;
+}
