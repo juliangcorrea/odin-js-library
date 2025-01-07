@@ -1,14 +1,24 @@
 /* Basic CSS Reset */
 *,
 *::before,
-*::after {
+*::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/*  Main section styles  */
+
 section {
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
     width: 100vw;
     display: flex;flex-direction: column;
     background-color: #fef6e4;
@@ -48,18 +58,20 @@ section button:hover{
     border: 2px solid #001858;
 }
 
+/*  Card section style  */
+
 .book-cards{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
     height: 100%;
+    width: 100%;
 }
 
 .book-card{
-    height: fit-content;
-    width: fit-content;
-    max-width: 25%;
+    height: 300px;
+    width: 350px;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
@@ -103,13 +115,62 @@ section button:hover{
     font-size: 20px;
 }
 
+.book-card .book-data{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .book-card .buttons{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    justify-self: flex-end;
 }
+
+/*  Dialog Box section styles  */
 
 #addBookDialog{
     align-self: center;
     justify-self: center;
+    flex-wrap: wrap;
+    max-width: 75%;
+    padding: 20px;
+    border: 2px solid #001858;
+    border-radius: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+#addBookDialog[open]{
+    display: flex;
+}
+
+#addBookDialog form{
+    width: 100%;
+    margin: 20px 5px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#addBookDialog input{
+    font-size: 15px;
+}
+
+#addBookDialog button{
+    padding: 5px;
+    cursor: pointer;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    background-color: #f582ae;
+    border-radius: 10px;
+    border:2px solid transparent;
+    color: #001858;
+}
+
+#addBookDialog button:hover{
+    border: 2px solid #001858;
 }

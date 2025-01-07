@@ -30,7 +30,6 @@ function addBookToLibrary(bookForm) {
 function displayBooks(){
     const bookCards = document.querySelector('.book-cards')
     bookCards.innerHTML = ""
-    console.log(myLibrary)
     myLibrary.forEach(book => {
         const bookCardTemplate = createBookCard(book)
         bookCards.insertAdjacentHTML('beforeend', bookCardTemplate)
@@ -55,7 +54,6 @@ function displayBooks(){
             } else if(myLibrary[id].status == 'Reading...'){
                 myLibrary[id].status = 'Finished'
             }
-            console.log('changing')
             displayBooks()
         })
     })
@@ -64,10 +62,12 @@ function displayBooks(){
 function createBookCard(book){
     return `
     <div class="book-card">
-        <h1 class="book-title">${book.title}</h1>
-        <h2 class="book-author">${book.author}</h2>
-        <h3 class="book-pages">${book.pages} pages</h3>
-        <h4 class="book-status">${book.status}</h4>
+        <div class="book-data">
+            <h1 class="book-title">${book.title}</h1>
+            <h2 class="book-author">${book.author}</h2>
+            <h3 class="book-pages">${book.pages} pages</h3>
+            <h4 class="book-status">${book.status}</h4>
+        </div>
         <div class="buttons">
             <button class="change-status">Change Status</button>
             <button class="delete-book" data-id="${myLibrary.indexOf(book)}">Delete Book</button>
